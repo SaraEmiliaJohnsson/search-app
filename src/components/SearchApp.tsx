@@ -42,9 +42,9 @@ export const SearchApp: React.FC = () => {
             <section className="p-4">
                 <h1>Search for a Dog Breed!</h1>
                 <input type="text" placeholder="Search..." value={searchTerm} onChange={handleSearchChange} className="w-full p-2 mb-4 border border-gray-300 rounded" />
-                <ul className="space-y-4">
+                <ul className="list-none space-y-4">
                     {filteredBreeds.map(breed => (
-                        <li key={breed.id} className="p-4 border border-gray-200 rounded shadow">
+                        <li key={breed.id} className="p-4 border border-gray-200 rounded shadow ">
                             <h3 className="text-xl font-bold">{breed.name}</h3>
                             <p>{breed.description}</p>
                             {breed.image && <img src={breed.image.url} alt={breed.name} className="mt-2" />}
