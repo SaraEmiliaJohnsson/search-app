@@ -1,3 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* src/app.css */
+
+body {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .custom-class {
+    /* Din egen stil här */
+  }
+  
