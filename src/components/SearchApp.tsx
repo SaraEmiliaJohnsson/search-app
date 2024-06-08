@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { fetchData } from "./ApiService";
 import CatCard from "./CatCard";
+import BreedDrawer from "./BreedDrawer";
 
 
 export interface Breed {
@@ -43,10 +44,9 @@ export const SearchApp: React.FC = () => {
 
     const handleBreedClick = (breed: Breed) => {
         setSelectedBreed(breed);
-        if (cardRef.current) {
-            cardRef.current.scrollIntoView({ behavior: 'smooth' });
-        }
+
     };
+
 
 
     const filteredBreeds = breeds.filter(breed =>
@@ -59,25 +59,13 @@ export const SearchApp: React.FC = () => {
                 <h1>Search for a Cat Breed!</h1>
 
                 <input type="text" placeholder="Search..." value={searchTerm} onChange={handleSearchChange} className="w-full p-2 mb-4 border border-gray-300 rounded" />
-
+                <BreedDrawer breeds={filteredBreeds} onSelectedBreed={handleBreedClick} />
                 {selectedBreed && (
                     <div ref={cardRef}
                         className="p-4 mt-4 border border-gray-200 rounded shadow">
                         <CatCard breed={selectedBreed} />
                     </div>
                 )}
-
-                <ul className="list-none space-y-4">
-
-                    {filteredBreeds.map(breed => (
-                        <li key={breed.id} onClick={() => handleBreedClick(breed)} className="cursor-pointer hover:bg-gray-100 p-2 rounded" >
-                            {breed.name}
-                        </li>
-                    ))}
-
-                </ul>
-
-
             </section>
         </>
     )
